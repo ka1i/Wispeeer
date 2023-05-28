@@ -4,6 +4,7 @@ import (
 	"errors"
 	"os"
 
+	"github.com/wispeeer/wispeeer/internal/pkg/config"
 	"github.com/wispeeer/wispeeer/internal/pkg/usage"
 	"github.com/wispeeer/wispeeer/pkg/info"
 )
@@ -48,6 +49,9 @@ func (app *app) Run() (int, error) {
 	if isBreak {
 		return app.success, err
 	}
+
+	// config parser
+	config.Configure.Init()
 
 	if isCapture {
 		isBreak, err = app.Flags()

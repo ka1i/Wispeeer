@@ -7,7 +7,6 @@ import (
 	"github.com/wispeeer/wispeeer/pkg/utils"
 )
 
-// Initialzation ...
 func (c *CMD) Initialzation(title string) error {
 	var err error
 
