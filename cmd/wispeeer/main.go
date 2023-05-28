@@ -1,10 +1,10 @@
 package main
 
 import (
-	"log"
 	"os"
 
 	"github.com/wispeeer/wispeeer/internal/app"
+	"github.com/wispeeer/wispeeer/pkg/logger"
 )
 
 func main() {
@@ -16,6 +16,6 @@ func main() {
 	code, err := service.Run()
 	defer os.Exit(code)
 	if err != nil {
-		log.Println(err)
+		logger.Task("app").Error(err)
 	}
 }

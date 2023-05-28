@@ -2,8 +2,8 @@ package cmd
 
 import (
 	"fmt"
-	"log"
 
+	"github.com/wispeeer/wispeeer/pkg/logger"
 	"github.com/wispeeer/wispeeer/pkg/utils"
 )
 
@@ -15,7 +15,7 @@ func (c *CMD) Initialzation(title string) error {
 		return fmt.Errorf("%s: File exists", title)
 	}
 
-	log.Println("wispeeer initialzation")
+	logger.Task("init").Infof("wispeeer init %s", title)
 
 	return err
 }

@@ -3,11 +3,11 @@ package wispeeer
 import (
 	"errors"
 	"fmt"
-	"log"
 	"os"
 	"strings"
 
 	"github.com/wispeeer/wispeeer/internal/app/wispeeer/cmd"
+	"github.com/wispeeer/wispeeer/pkg/logger"
 	"github.com/wispeeer/wispeeer/pkg/utils"
 )
 
@@ -49,7 +49,7 @@ func Flags() (bool, error) {
 func Service() error {
 	var err error
 
-	log.Println("usage: wispeeer -h")
+	logger.Task("app").Info("usage: wispeeer -h")
 
 	return err
 }

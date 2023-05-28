@@ -1,6 +1,10 @@
 package utils
 
-import "regexp"
+import (
+	"regexp"
+
+	"github.com/wispeeer/wispeeer/pkg/logger"
+)
 
 // ternary conditional operator 三元表达式
 // condition ? trueVal : falseVal
@@ -17,6 +21,7 @@ func TCO(condition bool, trueVal, falseVal interface{}) interface{} {
 func IsValid(str string) bool {
 	reg := regexp.MustCompile(`[\\\\/:*?\"<>|]`)
 	if reg == nil {
+		logger.Task("app").Error("Title Incorrect")
 		return false
 	}
 	result := reg.FindAllString(str, -1)

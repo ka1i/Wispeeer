@@ -2,16 +2,11 @@ package app
 
 import (
 	"errors"
-	"log"
 	"os"
 
 	"github.com/wispeeer/wispeeer/internal/pkg/usage"
 	"github.com/wispeeer/wispeeer/pkg/info"
 )
-
-func init() {
-	log.SetFlags(log.Lshortfile | log.LstdFlags)
-}
 
 type app struct {
 	Usage   string
