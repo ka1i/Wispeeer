@@ -19,3 +19,15 @@ func GetWorkspace() string {
 	}
 	return strings.Replace(dir, "\\", "/", -1)
 }
+
+func IsDir(path string) bool {
+	s, err := os.Stat(path)
+	if err != nil {
+		return false
+	}
+	return s.IsDir()
+}
+
+func IsFile(path string) bool {
+	return !IsDir(path)
+}

@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	"github.com/wispeeer/wispeeer/internal/app/wispeeer/cmd"
 	"github.com/wispeeer/wispeeer/internal/pkg/config"
@@ -32,6 +33,12 @@ func Flags() (bool, error) {
 	var isBreak bool = false
 
 	run := cmd.Run()
+	defer func() {
+		if err != nil {
+			return
+		}
+		utils.Timer("wispeeer", time.Now())
+	}()
 
 	switch argv[0] {
 	case "-i", "init":
@@ -46,6 +53,7 @@ func Flags() (bool, error) {
 			err = fmt.Errorf("wispeeer init <ka1i.github.io>")
 		}
 	case "-n", "new":
+		isBreak = true
 		if argc >= 2 {
 			if config.Configure.Error == nil {
 				if argv[1] == "page" && argc > 3 {
@@ -64,24 +72,28 @@ func Flags() (bool, error) {
 			err = fmt.Errorf("wispeeer new [post] <title>")
 		}
 	case "-g", "generate":
+		isBreak = true
 		if config.Configure.Error == nil {
 			err = run.Generate()
 		} else {
 			err = config.Configure.Error
 		}
 	case "-s", "server":
+		isBreak = true
 		if config.Configure.Error == nil {
 			err = run.Server()
 		} else {
 			err = config.Configure.Error
 		}
 	case "-d", "deploy":
+		isBreak = true
 		if config.Configure.Error == nil {
 			err = run.Deploy()
 		} else {
 			err = config.Configure.Error
 		}
 	default:
+		isBreak = true
 		err = errors.New("usage: wispeeer -h")
 	}
 	return isBreak, err

@@ -7,3 +7,6 @@
 /vendor
 
 go.sum
+
+# app
+config.yml
