@@ -31,3 +31,9 @@ func IsDir(path string) bool {
 func IsFile(path string) bool {
 	return !IsDir(path)
 }
+
+func SafeMkdir(dir string) {
+	if !IsExist(dir) {
+		os.Mkdir(dir, os.ModePerm)
+	}
+}

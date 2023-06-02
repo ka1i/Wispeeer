@@ -56,7 +56,7 @@ func Flags() (bool, error) {
 		isBreak = true
 		if argc >= 2 {
 			if config.Configure.Error == nil {
-				if argv[1] == "page" && argc > 3 {
+				if argv[1] == "page" && argc >= 3 {
 					if utils.IsValid(argv[2]) {
 						err = run.NewPage(argv[2])
 					}
